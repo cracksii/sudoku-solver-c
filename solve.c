@@ -29,7 +29,7 @@ void load(char* path) {
     FILE* file = fopen(path, "r");
     char buffer[100];
     int i = 0;
-    while(!feof(file)){
+    while(!feof(file)) {
         fgets(buffer, 100, file);
         for(int j = 0; j < 9; j++) {
             field[i][j] = buffer[j];
@@ -95,9 +95,6 @@ int valid(const int* x, const int* y, const int* number) {
 
     // Check for same number occurencies in the same row
     for(int i = 0; i < 9; i++) {
-        if(i == *x) {  // Skip if we are checking our newly inserted number
-            continue;
-        }
         if(field[*y][i] == *number + '0') { // if same number is already in row
             return 1;  // return invalid
         }
@@ -105,9 +102,6 @@ int valid(const int* x, const int* y, const int* number) {
 
     // Check for same number occurencies in the same column
     for(int i = 0; i < 9; i++) {
-        if(i == *y) {
-            continue;
-        }
         if(field[i][*x] == *number + '0') {
             return 1; 
         }
